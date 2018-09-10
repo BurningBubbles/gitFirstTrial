@@ -1,0 +1,2 @@
+export const IMAGE_ADDED = "IMAGE_ADDED";
+export const DELETE_ACTIVE_IMAGE = "DELETE_ACTIVE_IMAGE";
