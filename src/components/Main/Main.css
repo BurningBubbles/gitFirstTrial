@@ -4,10 +4,12 @@
     height: 100%;
 }
 
-.title-name, .msg-name, .urltype, .img-input {
+.title-name, .msg-name, .urltype, .img-input, .time-input, .send-input {
     color: black;
     font-family: "Nunito Sans", sans-serif;
     display: flex;
+    margin-left: 30px;
+    font-weight: 600;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */

@@ -12,8 +12,11 @@ class UrlDropDown extends Component {
                     className="urltype-select"
                     name="Url Type"
                 >
-                    <option>Landing Page:</option>
-                    <option>Product Url:</option>
+                    <option
+
+                    >Url Type:</option>
+                    <option>Landing Page</option>
+                    <option>Product Url</option>
 
                 </NativeSelect>
                 <Input className="url-input"
