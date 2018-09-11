@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './DenseAppBar.css';
 import {withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+
 
 const styles = {
     root: {
@@ -15,6 +15,7 @@ const styles = {
         marginLeft: -18,
         marginRight: 10,
     },
+
 };
 
 function DenseAppBar(props) {
@@ -24,7 +25,7 @@ function DenseAppBar(props) {
             <AppBar position="static">
                 <Toolbar variant="dense">
                     <Typography variant="title" color="inherit">
-                        Werbenachricht Schreiben
+                        <span className="app-bar-text">Werbenachricht Schreiben</span>
                     </Typography>
                 </Toolbar>
             </AppBar>
