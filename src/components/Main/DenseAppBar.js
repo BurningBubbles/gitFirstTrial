@@ -25,7 +25,7 @@ function DenseAppBar(props) {
             <AppBar position="static">
                 <Toolbar variant="dense">
                     <Typography variant="title" color="inherit">
-                        <span className="app-bar-text">Werbenachricht Schreiben</span>
+                        <span className="app-bar-text">{props.title}</span>
                     </Typography>
                 </Toolbar>
             </AppBar>
