@@ -7,46 +7,51 @@ class TimeInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            checked: false
+            checked: false,
+            timeValue: "dd/mm/yyyy hour:min"
         }
     }
 
     render() {
         return (
             <div className="time">
-                Zeitpunkt zu schicken <form className="time-input-form" noValidate>
-                {this.state.checked
-                    ?
-                    <TextField
-                        id="datetime-local"
-                        type="datetime-local"
-                        defaultValue="2017-05-24T10:30"
-                        className="time-input-text"
-                        disabled={true}
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
+               <span className="time-text">
+                Zeitpunkt zu schicken:
+               </span>
+                <form className="time-input-form" noValidate>
+                    {this.state.checked
+                        ?
+                        <TextField
+                            id="datetime-local"
+                            type="datetime-local"
+                            defaultValue={this.state.timeValue}
+                            className="time-input-text"
+                            disabled={true}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
+                        :
+                        <TextField
+                            id="datetime-local"
+                            type="datetime-local"
+                            defaultValue={this.state.timeValue}
+                            className="time-input-text"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
+
+                    }
+
+                </form>
+                <span className="text-now"> oder jetzt </span>
+                <span className="time-checkbox">
+                    <Checkbox
+                        checked={this.state.checked}
+                        onChange={event => this.handleChange(event.target.checked)}
                     />
-                    :
-                    <TextField
-                        id="datetime-local"
-                        type="datetime-local"
-                        defaultValue="2017-05-24T10:30"
-                        className="time-input-text"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    />
-
-                }
-
-            </form>
-                oder jetzt <Checkbox
-                checked={this.state.checked}
-                onChange={event => this.handleChange(event.target.checked)}
-                value="checkedA"
-            />
-
+                </span>
             </div>
         )
     }

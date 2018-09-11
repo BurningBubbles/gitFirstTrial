@@ -1,3 +1,19 @@
-.url-input {
+.url {
+    margin-bottom: 60px;
+    display: flex;
+}
+
+.url-text {
+    text-align: left;
+    margin-bottom: 15px;
+    font-size: 22px;
+    margin-right: 30px;
+}
+
+.url-input, .url-btn {
     margin-left: 10px;
+}
+
+.url-btn {
+    margin-left: 30px;
 }

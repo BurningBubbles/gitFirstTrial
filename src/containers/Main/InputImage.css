@@ -1,0 +1,42 @@
+.img-input {
+    display: block;
+    margin-bottom: 60px;
+    margin-left: 15px;
+}
+
+.img-upload {
+    display: flex;
+}
+
+.img-text {
+    font-size: 21px;
+    margin-right: 30px;
+}
+
+.img-display-img, .upload-btn, .img-name {
+    margin-right: 30px;
+}
+
+.img-name {
+    margin-bottom: 15px;
+    padding-top: 25px;
+}
+
+.confirm-btn {
+    padding-right: 140px;
+}
+
+.img-options {
+    display: flex;
+}
+
+.choose-btn {
+    margin-left: 75px;
+    position: relative;
+    bottom: 50px;
+}
+
+.delete-btn {
+    margin-left: 320px;
+    bottom: 34px;
+}

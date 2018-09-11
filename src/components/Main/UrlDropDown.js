@@ -7,14 +7,18 @@ import Button from "@material-ui/core/Button/Button";
 class UrlDropDown extends Component {
     render() {
         return (
-            <div>
+            <div className="url">
+                <div className="url-text">
+                    Link zum Produkt:
+                </div>
                 <NativeSelect
                     className="urltype-select"
                     name="Url Type"
                 >
                     <option
 
-                    >Url Type:</option>
+                    >Url Type:
+                    </option>
                     <option>Landing Page</option>
                     <option>Product Url</option>
 
@@ -22,14 +26,17 @@ class UrlDropDown extends Component {
                 <Input className="url-input"
                        placeholder="Url eingeben"
                 />
+                <span className="url-btn">
                 <Button
                     variant="contained"
                     color="primary"
-                    className="upload-btn"
+                    className="url-btn"
+                    size="small"
 
                 >
                     Check Url
                 </Button>
+                </span>
             </div>
         )
     }

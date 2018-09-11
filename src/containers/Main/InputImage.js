@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import './InputImage.css'
 import Button from "@material-ui/core/Button/Button";
@@ -11,7 +11,8 @@ class InputImage extends Component {
         super(props);
         this.imgRef = React.createRef();
         this.state = {
-            imgName: ''
+            imgName: '',
+            imageSelected: false
         }
     }
 
@@ -19,69 +20,90 @@ class InputImage extends Component {
     render() {
 
         return (
-            <div>Bild:
-                <div>
-                    <Button variant="contained"
-                            color="primary"
-                            className="upload-btn"
-                    >Bild Hochladen</Button>
-                    <span>
-                      <Input placeholder="Name des Bilds"
-                             onChange={event => {
-                                 this.setState({imgName: event.target.value})
-                             }}
-                             value={this.state.imgName}
-                      />
-                    </span>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        className="upload-btn"
-                        onClick={() => this.uploadImg()}
-                    >
+            <div className="img-input">
+                <div className="img-upload">
+                    <span className="img-text">Bild:</span>
+                    <span className="upload-btn">
+                      <Button variant="contained"
+                              color="primary"
+                              size="small"
+                              onClick={() => this.uploadImg()}
+                      >Bild Hochladen</Button>
+                    </span> <span>{this.checkActiveImage()}</span>
+                    {this.state.imageSelected
+                        ?
+                        <span className="img-details">
+                        <div className="img-name">
+                        <Input placeholder="Name des Bilds"
+                               onChange={event => {
+                                   this.setState({imgName: event.target.value})
+                               }}
+                               value={this.state.imgName}
+
+                        />
+                    </div>
+                            <div className="confirm-btn">
+                               <Button
+                                   variant="contained"
+                                   color="primary"
+                                   className="upload-btn"
+                                   size="small"
+                                   onClick={() => this.uploadImg()}
+                               >
                         Bestätigen
-                    </Button>
-                </div>
-                <div>
-                    <Button variant="contained"
-                            color="primary"
-                            className="upload-btn"
+                                </Button>
+                        </div>
+                        </span>
+                        : <Fragment> </Fragment>
+                    }
 
-                    >Bild wählen</Button>
                 </div>
-                <div className="img-display">
-                    {this.checkActiveImage()}
-                </div>
+                <div className="img-options">
+                    <div className="choose-btn">
+                        <Button variant="contained"
+                                color="primary"
+                                className="upload-btn"
+                                size="small"
 
-                <div className="img-delete">
-                    <Button variant="contained"
-                            color="primary"
-                            className="delete-btn"
-                            onClick={() => this.deleteImage()}
-                    >Löschen</Button>
-                </div>
+                        >Bild wählen</Button>
+                    </div>
+                    {this.state.imageSelected
+                        ?
+                        <div className="delete-btn">
+                            <Button variant="contained"
+                                    color="primary"
+                                    className="delete-btn"
+                                    size="small"
+                                    onClick={() => this.deleteImage()}
+                            >Löschen</Button>
+                        </div>
+                        :
+                        <Fragment> </Fragment>
+                    }
 
+                </div>
             </div>
         )
     };
 
     addImage = (url, name) => {
+        this.setState({imageSelected: true});
         this.props.imageAdded(url, name);
     };
 
     deleteImage = () => {
-        this.setState({imgName: ''});
+        this.setState({imgName: '', imageSelected: false});
         this.props.deleteActiveImage();
     };
 
     uploadImg = () => {
         this.addImage('https://images.dog.ceo/breeds/cotondetulear/IMG_20160830_202631573.jpg', this.state.imgName);
-
     };
 
     checkActiveImage = () => {
         if (this.props.activeImage) {
-            const actImg = this.props.activeImage;
+
+            //const actImg = this.props.activeImage;
             return (
                 <div>
                     <img className="img-display-img"
@@ -92,16 +114,21 @@ class InputImage extends Component {
                          height={100}
                     />
 
-                    <span className="img-details">
-                        <div>url: {actImg.url}</div>
-                        <div>name: {actImg.name}</div>
-                     </span>
+                    {/*<span className="img-details">*/}
+                    {/*<div>url: {actImg.url}</div>*/}
+                    {/*<div>name: {actImg.name}</div>*/}
+                    {/*</span>*/}
                 </div>
             )
         }
         else {
             return (
-                <span>NO IMAGE ADDED</span>
+                <img className="img-display-img"
+                     src="http://placehold.jp/100x100?text=No Image Added"
+                     alt="No Image Added"
+                     width={100}
+                     height={100}
+                />
             )
         }
     }

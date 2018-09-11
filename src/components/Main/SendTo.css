@@ -1,0 +1,40 @@
+.send {
+    display: flex;
+}
+
+.send-text {
+    font-size: 21px;
+    color: black;
+    font-weight: 600;
+    margin-right: 50px;
+}
+
+.radio-display {
+    position: relative;
+    bottom: 13px;
+}
+
+.send-obj {
+    display: flex;
+}
+
+.input-data-customer, .input-data-test {
+    position: relative;
+    bottom: 100px;
+    left: 300px;
+
+}
+
+.send-btn {
+    margin-left: 10px;
+
+}
+
+.input-data-test {
+    bottom: 54px;
+}
+
+.input-data-test-text {
+    margin-right: 10px;
+
+}

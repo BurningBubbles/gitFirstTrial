@@ -14,6 +14,7 @@ class SendTo extends Component {
         super(props);
         this.state = {
             btnValue: ''
+
         }
     }
 
@@ -24,9 +25,11 @@ class SendTo extends Component {
 
     render() {
         return (
-            <div>
+            <div className="send">
                 <FormControl component="fieldset" className="send-select-form">
-                    <FormLabel component="legend">Schicken an:</FormLabel>
+                    <span className="send-obj">
+                    <FormLabel component="legend"><span className="send-text">Schicken an:</span></FormLabel>
+                    <div className="radio-display">
                     <RadioGroup
                         aria-label="Schicken an:"
                         name="sendTo"
@@ -36,10 +39,12 @@ class SendTo extends Component {
                             this.handleChange(event.target.value)
                         }}
                     >
-                        <FormControlLabel value="Kunden" control={<Radio/>} label="Kunden"/>
-                        <FormControlLabel value="Test User" control={<Radio/>} label="Test User"/>
 
-                    </RadioGroup>
+                            <FormControlLabel value="Kunden" control={<Radio/>} label="Kunden"/>
+                            <FormControlLabel value="Test User" control={<Radio/>} label="Test User"/>
+
+                    </RadioGroup></div>
+                    </span>
                     {this.checkBtn()}
                 </FormControl>
             </div>
@@ -49,7 +54,7 @@ class SendTo extends Component {
     checkBtn() {
         switch (this.state.btnValue) {
             case 'Kunden':
-                return (<div>
+                return (<div className="input-data-customer">
                     <NativeSelect
                         className="customer-select"
                         name="Customer Group"
@@ -57,6 +62,7 @@ class SendTo extends Component {
                     >
                         <option>Choose User Group</option>
                     </NativeSelect>
+                    <span className="send-btn">
                     <Button
                         variant="contained"
                         color="primary"
@@ -65,10 +71,11 @@ class SendTo extends Component {
                     >
                         Send
                     </Button>
+                    </span>
                 </div>);
             case 'Test User':
-                return (<div>
-                    Test User Eingeben: <Input
+                return (<div className="input-data-test">
+                    <span className="input-data-test-text">Test User Eingeben: </span><Input
                     placeholder="Input Test User"
                 /> <Button
                     variant="contained"
